@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакти | Бутик "Shine"</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Зв'яжіться з нами</h1>
+        
+        <input type="checkbox" id="burger" class="burger-checkbox">
+        <label for="burger" class="burger-label">&#9776;</label>
+
+        <nav class="main-nav">
+            <a href="index.html">Головна</a> 
+            <div class="dropdown">
+                <a href="catalog.html">Каталог ароматів &#9662;</a>
+                <div class="dropdown-content">
+                    <a href="catalog.html">Всі аромати</a>
+                    <a href="catalog.html">Східні колекції</a>
+                    <a href="catalog.html">Квіткові колекції</a>
+                </div>
+            </div>
+            <a href="about.html">Про нас</a>
+            <a href="contact.html">Контакти</a>
+        </nav>
+    </header>
+
+    <main class="contact-layout">
+        <ul class="breadcrumbs" style="grid-column: 1 / -1;">
+            <li><a href="index.html">Головна</a></li>
+            <li class="breadcrumbs__current">Контакти</li>
+        </ul>
+
+        <section class="form-section">
+            <h2>Запис на дегустацію ароматів</h2>
+            <form action="#" method="POST" class="contact-form">
+                <label for="userEmail" class="contact-form__label">Ваш Email:</label>
+                <input type="email" id="userEmail" name="userEmail" required placeholder="example@mail.com" class="contact-form__input">
+
+                <label for="userTel" class="contact-form__label">Номер телефону:</label>
+                <input type="tel" id="userTel" name="userTel" required pattern="[0-9]{10}" placeholder="0991234567" title="Введіть 10 цифр (наприклад: 0991234567)" class="contact-form__input">
+
+                <label for="socialUrl" class="contact-form__label">Посилання на ваш Instagram (необов'язково):</label>
+                <input type="url" id="socialUrl" name="socialUrl" placeholder="https://instagram.com/..." class="contact-form__input">
+
+                <label for="visitDate" class="contact-form__label">Оберіть дату та час візиту:</label>
+                <input type="datetime-local" id="visitDate" name="visitDate" required class="contact-form__input">
+                <div class="contact-form__checkbox-group">
+                <input type="checkbox" id="agree" class="custom-checkbox" required>
+                <label for="agree" class="custom-checkbox__label">
+                Я погоджуюсь на обробку персональних даних та умови запису
+         </label>
+    </div>
+
+<div class="contact-form__checkbox-group">
+    <input type="checkbox" id="newsletter" class="custom-checkbox">
+    <label for="newsletter" class="custom-checkbox__label">
+        Отримувати новини про нові аромати на Email
+    </label>
+</div>
+
+                <input type="submit" value="Відправити заявку" class="contact-form__submit">
+            </form>
+        </section>
+
+        <aside class="contact-info">
+            <h3 class="contact-info__title">Наша адреса</h3>
+            <p class="contact-info__text">м. Харків<br>вул. Сумська, 14</p>
+            <p class="contact-info__text"><strong>Графік роботи:</strong><br>Пн-Сб, 10:00 - 19:00</p>
+        </aside>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Бутик "Shine". Всі права захищено.</p>
+    </footer>
+</body>
+</html>

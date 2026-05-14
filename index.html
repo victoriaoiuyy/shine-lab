@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Головна | Бутик "Shine"</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">  
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* Стилі для центрування аудіоплеєра */
+        .audio-player { margin-top: 20px; text-align: center; }
+        .audio-player p { font-size: 14px; font-style: italic; margin-bottom: 8px; color: #00132e; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Бутик "Shine"</h1>
+        
+        <input type="checkbox" id="burger" class="burger-checkbox">
+        <label for="burger" class="burger-label">&#9776;</label>
+        
+        <nav class="main-nav">
+            <a href="index.html">Головна</a> 
+            <div class="dropdown">
+                <a href="catalog.html">Каталог ароматів &#9662;</a>
+                <div class="dropdown-content">
+                    <a href="catalog.html">Всі аромати</a>
+                    <a href="catalog.html">Східні колекції</a>
+                    <a href="catalog.html">Квіткові колекції</a>
+                </div>
+            </div>
+            <a href="about.html">Про нас</a>
+            <a href="contact.html">Контакти</a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <article>
+                <h2>Наша філософія</h2>
+                
+                <p class="calligraphy-text">"Shine" - це не просто бутик парфумерії. Це місце, де кожен аромат розповідає свою унікальну історію, створюючи неповторну атмосферу для кожного відвідувача. Ми віримо, що парфуми - це не лише про запах, а й про емоції, спогади та настрій, які вони викликають.</p>
+                
+                <p class="glowing-text" style="font-style: italic; color: #00132e; margin-top: 15px; text-align: center;">Відчуйте справжнє сяйво кожного дня.</p>
+            </article>
+        </section>
+
+        <section class="media-container">
+            <h3>Атмосфера нашого бутика</h3>
+            
+            <video controls width="600">    
+                <source src="media/promo.mp4" type="video/mp4">
+                Ваш браузер не підтримує відео.
+            </video>
+            
+            <div class="audio-player">
+                <p>Атмосферний саундтрек:</p>
+                <audio controls>
+                    <source src="media/music.mp3" type="audio/mpeg">
+                    Ваш браузер не підтримує аудіо.
+                </audio>
+            </div>
+        </section>
+
+        <section class="features">
+            <h2 class="features__title">Чому обирають "Shine"</h2>
+            <div class="features__grid">
+                <div class="features__item features__item_highlighted">
+                    <h3 class="features__subtitle">Ексклюзивність</h3>
+                    <p class="features__text">Тільки оригінальна нішева парфумерія від світових брендів.</p>
+                </div>
+                <div class="features__item">
+                    <h3 class="features__subtitle">Атмосфера</h3>
+                    <p class="features__text">Затишний простір для неспішної дегустації ароматів.</p>
+                </div>
+                <div class="features__item">
+                    <h3 class="features__subtitle">Експертність</h3>
+                    <p class="features__text">Наші консультанти допоможуть підібрати ваш ідеальний шлейф.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Бутик "Shine". Всі права захищено.</p>
+    </footer>
+</body>
+</html>

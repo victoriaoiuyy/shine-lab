@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Про нас | Бутик "Shine"</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Про бутик "Shine"</h1>
+        
+        <input type="checkbox" id="burger" class="burger-checkbox">
+        <label for="burger" class="burger-label">&#9776;</label>
+        
+        <nav class="main-nav">
+            <a href="index.html">Головна</a> 
+            <div class="dropdown">
+                <a href="catalog.html">Каталог ароматів &#9662;</a>
+                <div class="dropdown-content">
+                    <a href="catalog.html">Всі аромати</a>
+                    <a href="catalog.html">Східні колекції</a>
+                    <a href="catalog.html">Квіткові колекції</a>
+                </div>
+            </div>
+            <a href="about.html">Про нас</a>
+            <a href="contact.html">Контакти</a>
+        </nav>
+    </header>
+
+    <main class="about-layout">
+        <div class="about-layout__header">
+            <h2>Історія нашого сяйва</h2>
+        </div>
+        
+        <aside class="about-layout__sidebar">
+            <h3>Факти про нас</h3>
+            <ul style="text-align: left; margin-left: 20px;">
+                <li>Засновано у 2026 році</li>
+                <li>Понад 500 щасливих клієнтів</li>
+                <li>Тільки оригінальні бренди</li>
+            </ul>
+        </aside>
+        
+        <article class="about-layout__content">
+            <p style="margin-bottom: 15px;">Наш бутик був створений з метою подарувати кожному можливість знайти свій ідеальний аромат. Ми ретельно відбираємо найкращі нішеві парфуми з усього світу.</p>
+            <p>Ми віримо, що аромат — це невидимий аксесуар, який залишає найсильніший спогад. Саме тому наша місія — зробити так, щоб ваш шлейф завжди розповідав про вас найкраще.</p>
+        </article>
+        
+        <section class="faq-section" style="grid-column: 1 / -1; margin-top: 20px;">
+            <h2 style="margin-bottom: 25px;">Часті питання</h2>
+            
+            <div class="accordion">
+                <div class="accordion__item">
+                    <input type="checkbox" name="faq" id="faq1" class="accordion__input">
+                    <label for="faq1" class="accordion__label">Як правильно підібрати свій аромат?</label>
+                    <div class="accordion__content">
+                        <p>Наші експерти рекомендують наносити парфум на шкіру і "прожити" з ним кілька годин. Аромат розкривається у три ноти: верхні, серця та базові. Ми з радістю допоможемо вам знайти ідеальну композицію під ваш характер.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion__item">
+                    <input type="checkbox" name="faq" id="faq2" class="accordion__input">
+                    <label for="faq2" class="accordion__label">Чи є у вас подарункові сертифікати?</label>
+                    <div class="accordion__content">
+                        <p>Так, ви можете придбати естетичні подарункові сертифікати на будь-яку суму в нашому бутику або замовити зручний електронний варіант на email.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion__item">
+                    <input type="checkbox" name="faq" id="faq3" class="accordion__input">
+                    <label for="faq3" class="accordion__label">Скільки тримається шлейф ваших парфумів?</label>
+                    <div class="accordion__content">
+                        <p>Стійкість залежить від концентрації (Eau de Parfum, Extrait de Parfum) та індивідуальних особливостей шкіри. В середньому наші нішеві аромати тримаються від 8 до 24 годин.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="about-layout__footer">
+            <p class="glowing-text" style="font-weight: bold; font-size: 1.1rem;">Завжди раді бачити вас у "Shine"!</p>
+        </div>
+    </main>
+
+    <div class="promo-blob">
+        <span>Знижка<br>-10%</span>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Бутик "Shine". Всі права захищено.</p>
+    </footer>
+</body>
+</html>
