@@ -670,3 +670,82 @@ strong { color: #1d3557; }
 .custom-checkbox:focus + .custom-checkbox__label::before {
     box-shadow: 0 0 0 3px rgba(168, 218, 220, 0.5);
 }
+/* Фікс для хлібних крихт на мобільних пристроях */
+@media screen and (max-width: 768px) {
+    .breadcrumbs {
+        grid-column: 1 / -1 !important; /* Примусово розтягуємо на всю ширину */
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 15px; /* Робимо невеликий відступ до форми */
+    }
+}
+/* =======================================================
+   СТИЛІ ДЛЯ ЛАБОРАТОРНОЇ РОБОТИ №3 (JAVASCRIPT ЕФЕКТИ)
+   ======================================================= */
+
+/* Стильна мікро-панель розробника в лівому нижньому кутку */
+.debug-panel {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(29, 53, 87, 0.9);
+    color: #f1faee;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-family: monospace;
+    z-index: 9999;
+    pointer-events: none; /* Панель не заважає клікати по сайту */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+.debug-panel strong {
+    color: #ffb5a7;
+}
+
+/* Кнопка закриття (хрестик) для плаваючої реклами */
+.promo-blob {
+    position: fixed !important; /* Повертаємо фіксацію на екрані */
+    bottom: 80px !important; /* Підняли трохи вище, щоб не закривати координати */
+    right: 20px !important; /* Притискаємо до ПРАВОГО краю сторінки */
+    z-index: 1000;
+}
+.promo-blob__close {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    width: 22px;
+    height: 22px;
+    background: #e63946;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: transform 0.2s ease;
+}
+.promo-blob__close:hover {
+    transform: scale(1.1);
+    background: #1d3557;
+}
+
+/* Кнопка оптимізації шрифту */
+.action-btn {
+    background: linear-gradient(135deg, #ffb5a7, #fcd5e2);
+    color: #1d3557;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+.action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(255, 181, 167, 0.4);
+}

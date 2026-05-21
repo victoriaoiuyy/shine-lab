@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Лабораторна 3 | Всі Завдання (Точно за ТЗ)</title>
+    <style>
+        body { font-family: 'Montserrat', sans-serif; padding: 40px; position: relative; min-height: 100vh; background-color: #fafafa; padding-bottom: 100px; padding-top: 150px;}
+        
+        h1 { margin-top: 20px; color: #1d3557; border-bottom: 2px solid #fcd5e2; padding-bottom: 5px; }
+        h2 { color: #1d3557; border-bottom: 2px solid #fcd5e2; padding-bottom: 5px; }
+        
+        button { background: #1d3557; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; transition: 0.3s; margin-top: 5px; font-family: inherit;}
+        button:hover { background: #e63946; }
+        .task-section { background: #fff; padding: 20px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        
+        /* Блок 1.4: Годинник */
+        #clock-container { font-size: 1.2rem; font-weight: bold; color: #e63946; margin-top: 10px; }
+
+        /* Блок 2.1: Підказка */
+        .tooltip { position: absolute; background: #e63946; color: #fff; padding: 8px 12px; border-radius: 5px; pointer-events: none; opacity: 0; transition: opacity 0.2s; z-index: 1000; font-size: 0.9rem; }
+        
+        /* Блок 2.3: Список та Квадрат */
+        #colors-ul { position: fixed; top: 20px; left: 20px; border: 2px solid #1d3557; background: #fff; padding: 10px; list-style: none; margin: 0; z-index: 1000; border-radius: 8px;}
+        #colors-ul li { cursor: pointer; padding: 5px; font-weight: bold;}
+        #colors-ul li:hover { color: #e63946; }
+        #black-square { position: fixed; top: 20px; right: 20px; width: 100px; height: 100px; background-color: black; border: 2px solid #333; z-index: 1000; border-radius: 8px; transition: background 0.3s;}
+        
+        /* Блок 2.4: Координати */
+        .debug-panel { position: fixed; bottom: 10px; left: 10px; background: rgba(29, 53, 87, 0.9); color: #f1faee; padding: 10px 20px; border-radius: 20px; font-family: monospace; z-index: 9999; pointer-events: none; }
+        
+        /* Блок 3.1: Реклама з Cookies (Виїжджає зліва при заході) */
+        .promo-banner { 
+            position: fixed; 
+            top: 250px; 
+            left: -400px; /* Сховано за лівим екраном ("на заході") */
+            background: linear-gradient(135deg, #ffb5a7, #fcd5e2); 
+            padding: 20px 50px 20px 20px; 
+            border-radius: 0 10px 10px 0; 
+            box-shadow: 2px 4px 15px rgba(0,0,0,0.2);
+            font-weight: bold; 
+            color: #1d3557; 
+            z-index: 10001; 
+            transition: left 0.5s ease-out; /* Анімація виїзду */
+        }
+        .promo-banner__close { 
+            position: absolute; 
+            top: 50%; 
+            right: 10px; 
+            transform: translateY(-50%);
+            background: #e63946; 
+            color: white; 
+            border: none; 
+            border-radius: 50%; 
+            width: 25px; 
+            height: 25px; 
+            cursor: pointer; 
+        }
+        
+        /* Блок 3.2: Блокнотик */
+        .notepad { display: flex; gap: 20px; margin-top: 15px; border: 2px dashed #1d3557; padding: 20px; border-radius: 10px;}
+        .notes-sidebar { display: flex; flex-direction: column; gap: 10px; width: 250px; border-right: 2px solid #fcd5e2; padding-right: 15px;}
+        .notes-sidebar a { text-decoration: none; color: #1d3557; font-size: 0.9rem; padding: 5px; background: #f1faee; border-radius: 5px;}
+        .notes-sidebar a:hover { background: #ffb5a7; }
+    </style>
+</head>
+<body>
+    <a href="index.html" style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); color: #e63946; font-weight: bold; text-decoration: none; font-size: 1.2rem; background: white; padding: 5px 15px; border-radius: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">⬅ Повернутися в Бутик</a>
+    
+    <ul id="colors-ul">
+        <li style="border-bottom: 1px solid #ccc; cursor: default; padding-bottom: 5px; margin-bottom: 5px;">Блок 2.3 (Кольори):</li>
+        <li data-color="red">Червоний</li>
+        <li data-color="blue">Синій</li>
+        <li data-color="green">Зелений</li>
+        <li data-color="yellow">Жовтий</li>
+        <li data-color="purple">Фіолетовий</li>
+    </ul>
+    <div id="black-square"></div>
+
+    <div id="promo-banner" class="promo-banner">
+        СУПЕР ПРОПОЗИЦІЯ! ТІЛЬКИ СЬОГОДНІ!
+        <button id="close-promo" class="promo-banner__close" title="Прибрати">×</button>
+    </div>
+
+    <h1>Лабораторна робота №3: Всі завдання</h1>
+
+    <div class="task-section">
+        <h2>Блок 1</h2>
+        
+        <strong>Завдання 1: Функція з двома аргументами</strong>
+        <div id="output-1-1" style="margin-top:10px; min-height: 35px; border: 1px dashed gray; padding: 5px; display: flex; align-items: center;"></div>
+        <button id="btn-1-1">Вивести текст (розмір 24px)</button>
+
+        <br><br>
+        <strong>Завдання 3: getElementsByTagName та setAttribute</strong>
+        <p>Це звичайний параграф (тег p).</p>
+        <p>І це також параграф (тег p).</p>
+        <button id="btn-1-3">Змінити всі &lt;p&gt; на 15px</button>
+
+        <br><br>
+        <strong>Завдання 4: Текстовий годинник</strong>
+        <div id="clock-container">Завантаження часу...</div>
+
+        <br>
+        <strong>Завдання 5: Ефект витирання</strong>
+        <div id="wipe-text" style="background: #1d3557; color: white; padding: 10px; width: 300px; border-radius: 5px; margin: 10px 0; transition: opacity 0.1s;">
+            Цей текст повільно зникне!
+        </div>
+        <button id="start-wipe">Запустити витирання</button>
+    </div>
+
+    <div class="task-section">
+        <h2>Блок 2</h2>
+        
+        <strong>Завдання 1: Розумна спливаюча підказка (Визначає межі)</strong><br>
+        <button id="tooltip-btn" style="margin-top: 10px;">Натисни мене для розумної підказки</button>
+        <button id="tooltip-btn-right" style="margin-top: 10px; float: right;">Кнопка скраю екрану</button>
+        <div style="clear:both;"></div>
+        <div id="my-tooltip" class="tooltip">Я розумна підказка!</div>
+
+        <br><br>
+        <strong>Завдання 2: Зміна колонок таблиці</strong>
+        <table id="my-table" border="1" cellpadding="10" style="border-collapse: collapse; margin: 10px 0; text-align: center;">
+            <tr>
+                <th style="background: #1d3557; color: white; transition: 0.3s;">Товар (Колонка 1)</th>
+                <th style="background: #e63946; color: white; transition: 0.3s;">Ціна (Колонка 2)</th>
+            </tr>
+            <tr><td>Baccarat Rouge</td><td>12 500 грн</td></tr>
+            <tr><td>Delina Parfums</td><td>9 800 грн</td></tr>
+        </table>
+        <button id="swap-cols-btn">Поміняти колонки</button>
+    </div>
+
+    <div class="task-section">
+        <h2>Блок 3</h2>
+        
+        <strong>Завдання 1: Рекламний текст (Cookies)</strong><br>
+        <small>Оновіть сторінку, щоб побачити, як реклама виїжджає зліва. Якщо ви її закрили, вона не з'явиться 1 день.</small><br>
+        <button id="reset-cookie-btn" style="background: gray; font-size: 0.8rem;">Скинути Cookie (щоб перевірити знову)</button>
+
+        <br><br>
+        <strong>Завдання 2: Блокнотик (LocalStorage)</strong>
+        <div class="notepad">
+            <div id="notes-list" class="notes-sidebar">
+                <small>Ваші записи:</small>
+            </div>
+            <div>
+                <textarea id="note-input" rows="5" cols="40" placeholder="Напишіть щось..." style="padding: 5px; font-family: inherit;"></textarea><br>
+                <button id="save-note-btn">Зберегти запис</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="debug-panel">
+        X: <strong id="mouseX" style="color: #ffb5a7;">0</strong>, Y: <strong id="mouseY" style="color: #ffb5a7;">0</strong> | 
+        Клавіша: <strong id="keyKey" style="color: #ffb5a7;">-</strong>
+    </div>
+
+    <img id="jump-img" src="img/baccarat.avif" alt="Jump" style="position: fixed; top:0; left:0; width: 80px; display: none; z-index: 9999; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: top 0.2s, left 0.2s;">
+    <button id="start-jump-btn" style="position: fixed; bottom: 60px; left: 10px; z-index: 10000; background: #e63946;">Запустити стрибаючу картинку</button>
+
+
+    <script>
+        // ================= БЛОК 1 =================
+        let isText1_1Visible = false;
+        function printCustomText(textString, fontSize) {
+            const outputDiv = document.getElementById('output-1-1');
+            const newElement = document.createElement('span');
+            newElement.innerText = textString;
+            newElement.style.fontSize = fontSize;
+            outputDiv.innerHTML = ''; 
+            outputDiv.appendChild(newElement);
+        }
+        document.getElementById('btn-1-1').onclick = function() {
+            if (!isText1_1Visible) {
+                printCustomText("Привіт, я текст із функції!", "24px");
+                this.textContent = "Сховати текст";
+                this.style.background = "gray";
+            } else {
+                document.getElementById('output-1-1').innerHTML = '';
+                this.textContent = "Вивести текст (розмір 24px)";
+                this.style.background = "";
+            }
+            isText1_1Visible = !isText1_1Visible;
+        };
+
+        let jumpInterval;
+        let isJumping = false;
+        document.getElementById('start-jump-btn').onclick = function() {
+            const jumpImg = document.getElementById('jump-img');
+            if (!isJumping) {
+                jumpImg.style.display = 'block';
+                jumpInterval = setInterval(() => {
+                    jumpImg.style.left = Math.floor(Math.random() * (window.innerWidth - 100)) + 'px';
+                    jumpImg.style.top = Math.floor(Math.random() * (window.innerHeight - 100)) + 'px';
+                }, 1000);
+                this.textContent = "Зупинити картинку";
+                this.style.background = "gray";
+            } else {
+                clearInterval(jumpInterval);
+                jumpImg.style.display = 'none';
+                this.textContent = "Запустити стрибаючу картинку";
+                this.style.background = "#e63946";
+            }
+            isJumping = !isJumping;
+        };
+
+        let isPChanged = false;
+        document.getElementById('btn-1-3').onclick = function() {
+            const paragraphs = document.getElementsByTagName('p');
+            for (let i = 0; i < paragraphs.length; i++) {
+                if (!isPChanged) {
+                    paragraphs[i].style.fontSize = "15px";
+                    paragraphs[i].setAttribute('data-size-changed', 'true');
+                    paragraphs[i].style.color = "#e63946";
+                    paragraphs[i].style.fontWeight = "bold";
+                } else {
+                    paragraphs[i].style.fontSize = "";
+                    paragraphs[i].removeAttribute('data-size-changed');
+                    paragraphs[i].style.color = "";
+                    paragraphs[i].style.fontWeight = "";
+                }
+            }
+            this.textContent = isPChanged ? "Змінити всі <p> на 15px" : "Повернути стандартний шрифт";
+            this.style.background = isPChanged ? "" : "gray";
+            isPChanged = !isPChanged;
+        };
+
+        function updateClock() {
+            document.getElementById('clock-container').innerText = new Date().toLocaleTimeString("uk-UA");
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        let wipeTimer;
+        let isWiped = false;
+        document.getElementById('start-wipe').onclick = function() {
+            let textElem = document.getElementById('wipe-text');
+            if (!isWiped) {
+                let opacity = 1;
+                wipeTimer = setInterval(() => {
+                    opacity -= 0.05;
+                    textElem.style.opacity = opacity;
+                    if (opacity <= 0) {
+                        clearInterval(wipeTimer);
+                        textElem.style.opacity = 0; 
+                    }
+                }, 50);
+                this.textContent = "Повернути текст";
+                this.style.background = "gray";
+            } else {
+                clearInterval(wipeTimer);
+                textElem.style.opacity = 1;
+                this.textContent = "Запустити витирання";
+                this.style.background = "";
+            }
+            isWiped = !isWiped;
+        };
+
+
+        // ================= БЛОК 2 =================
+        const tooltipBox = document.getElementById('my-tooltip');
+        function showSmartTooltip(e, buttonElement) {
+            e.stopPropagation();
+            tooltipBox.style.opacity = 0;
+            tooltipBox.style.display = 'block';
+            let rect = buttonElement.getBoundingClientRect();
+            let ttX = rect.left + window.scrollX;
+            let ttY = rect.bottom + window.scrollY + 10;
+            
+            let ttRect = tooltipBox.getBoundingClientRect();
+            if (rect.left + ttRect.width > window.innerWidth) ttX = window.innerWidth - ttRect.width - 20;
+            if (rect.bottom + ttRect.height > window.innerHeight) ttY = rect.top + window.scrollY - ttRect.height - 10;
+
+            tooltipBox.style.left = ttX + 'px';
+            tooltipBox.style.top = ttY + 'px';
+            tooltipBox.style.opacity = 1;
+        }
+
+        document.getElementById('tooltip-btn').onclick = (e) => showSmartTooltip(e, document.getElementById('tooltip-btn'));
+        document.getElementById('tooltip-btn-right').onclick = (e) => showSmartTooltip(e, document.getElementById('tooltip-btn-right'));
+        document.onclick = function(e) { if (!e.target.id.includes('tooltip')) tooltipBox.style.opacity = 0; };
+
+        document.getElementById('swap-cols-btn').onclick = function() {
+            const table = document.getElementById('my-table');
+            for (let i = 0; i < table.rows.length; i++) {
+                let cells = table.rows[i].cells;
+                if (cells.length >= 2) {
+                    let tempHTML = cells[0].innerHTML;
+                    let tempBg = cells[0].style.background;
+                    cells[0].innerHTML = cells[1].innerHTML;
+                    cells[1].innerHTML = tempHTML;
+                    cells[0].style.background = cells[1].style.background;
+                    cells[1].style.background = tempBg;
+                }
+            }
+        };
+
+        document.querySelectorAll('#colors-ul li[data-color]').forEach(li => {
+            li.onclick = function() {
+                document.getElementById('black-square').style.backgroundColor = this.getAttribute('data-color');
+            };
+        });
+
+        document.addEventListener("mousemove", e => {
+            document.getElementById("mouseX").textContent = e.clientX;
+            document.getElementById("mouseY").textContent = e.clientY;
+        });
+        document.addEventListener("keydown", e => {
+            document.getElementById("keyKey").textContent = e.key === " " ? "Space" : e.key;
+        });
+
+
+        // ================= БЛОК 3 =================
+        function setCookie(name, value, days) {
+            let expires = "";
+            if (days) {
+                let date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+        }
+        function getCookie(name) {
+            let nameEQ = name + "=";
+            let ca = document.cookie.split(';');
+            for(let i=0;i < ca.length;i++) {
+                let c = ca[i];
+                while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+            }
+            return null;
+        }
+        
+        // Подія завантаження сторінки (із заходу на сторінку)
+        window.addEventListener('load', () => {
+            const banner = document.getElementById('promo-banner');
+            if (getCookie("hideLabPromo") !== "true") {
+                // Невелика затримка для ефектності
+                setTimeout(() => {
+                    banner.style.left = "0"; // Реклама виїжджає
+                }, 500);
+            }
+        });
+        
+        // Кнопка "Прибрати"
+        document.getElementById('close-promo').onclick = function() {
+            const banner = document.getElementById('promo-banner');
+            banner.style.left = "-400px"; // Ховаємо назад
+            setCookie("hideLabPromo", "true", 1); // Зберігаємо на 1 день
+        };
+
+        document.getElementById('reset-cookie-btn').onclick = function() {
+            setCookie("hideLabPromo", "", -1);
+            location.reload();
+        };
+
+        const noteInput = document.getElementById('note-input');
+        function loadNotes() {
+            let list = document.getElementById('notes-list');
+            list.innerHTML = '<small>Ваші записи:</small>';
+            let notes = JSON.parse(localStorage.getItem('myLabNotes')) || [];
+            notes.forEach(note => {
+                let a = document.createElement('a');
+                a.href = "#";
+                a.innerText = note.date;
+                a.onclick = (e) => { e.preventDefault(); noteInput.value = note.text; };
+                list.appendChild(a);
+            });
+        }
+        document.getElementById('save-note-btn').onclick = function() {
+            if (!noteInput.value.trim()) return;
+            let notes = JSON.parse(localStorage.getItem('myLabNotes')) || [];
+            notes.push({ date: new Date().toLocaleTimeString('uk-UA') + " " + new Date().toLocaleDateString('uk-UA'), text: noteInput.value });
+            localStorage.setItem('myLabNotes', JSON.stringify(notes));
+            noteInput.value = '';
+            loadNotes();
+        };
+        loadNotes();
+    </script>
+</body>
+</html>
