@@ -57,3 +57,15 @@ body {
     padding-left: 15px;
     opacity: 0.9;
 }
+.shine-card__img {
+    width: 60px; /* Ідеальний розмір для іконки */
+    height: auto;
+    display: block;
+    margin: 0 auto 15px auto; /* Центруємо по горизонталі */
+    transition: transform 0.3s ease;
+}
+
+/* Маленький ефект: картинка трохи збільшується при наведенні */
+.shine-card:hover .shine-card__img {
+    transform: scale(1.1);
+}
